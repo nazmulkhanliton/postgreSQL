@@ -16,4 +16,22 @@ datasource db {
 model User {
   id   Int    @id @default(autoincrement())
   name String
+  @@map("users")
+}
+
+model Profile {
+  id          String    @id @default(cuid())
+  firstName   String?
+  lastName    String?
+  avatar      String?
+  bio         String?
+  dateOfBirth DateTime?
+  gender      String?
+  address     String?
+  userId      String    @unique
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("profiles")
 }
